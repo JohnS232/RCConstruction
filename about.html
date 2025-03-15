@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RC Flooring And Granite</title>
+  
+  <!-- Bootstrap CSS via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <!-- Google Fonts --> 
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+  
+ <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-d5ZWywb5/YbCFwlqKZ3r/We1Qo54Q9uCZP5pj7q1O3FBNZKgGb+Fw9+0blbw8I6Nfs6Q1/1B0N+yJmg7Xr2fg==" crossorigin="anonymous" />
+
+  <!-- Link to Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() { emailjs.init("FO3VbMBV-la7xfixE");  })(); // Replace 'YOUR_EMAILJS_PUBLIC_KEY' with your actual EmailJS Public Key. 
+  </script>
+  <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+(function(){ emailjs.init({
+  publicKey: "FO3VbMBV-la7xfixE", }); })();
+</script>
+
+</head>
+<body>
+
+  <!-- Navbar Section -->
+  <nav class="navbar navbar-expand-md navbar-light">
+    <div class="container-fluid">
+      <a href="index.html" id="navbar__logo" class="navbar-brand">RC Flooring And Granite</a>
+
+      <!-- Mobile menu toggle button (hamburger) -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menu Items -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link" id="home-page">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="about.html" class="nav-link" id="about-page">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a href="services.html" class="nav-link" id="services-page">Services</a>
+          </li>
+          <li class="nav-item">
+            <a href="contactus.html" class="nav-link" id="contact-page">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Bootstrap JS and Dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+
+  <!-- Custom JS (for additional behavior) -->
+  <script>
+    // Mobile Menu Toggle
+// Select the DOM elements for the menu and toggle button
+const menuToggle = document.querySelector('#mobile-menu');
+const menu = document.querySelector('.navbar__menu');
+
+// Function to toggle the menu visibility
+menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('collapse');  // Toggle the collapse class
+});
+
+
+  </script>
+
+  <img src="images/Aboutusss.png" alt="About Us" class="responsive">
+
+<!-- About Section -->
+<div class="main" id="about">
+    <div class="main__container">
+        <div class="main__content">
+          <h1>Our Story</h1>
+          <p>RC Flooring & Granite, Inc. Was Founded In 1989 By Rodolfo Castillo. Rodolfo Had Been in Flooring or Associated with Flooring for Most of His Life.  He Learned from One of The Best in Our Business, And He Strives Each Day to Deliver the Best Service with Quality and Value In Mind.  His Dad, Rodolfo Castillo Sr, Has Been His Life-Long Mentor in The Flooring Industry, And We Are So Thrilled That Jr Has Joined the Family Business.</p>
+          
+          <h2>Our Mission</h2>
+          <p>The Castillo Family Strongly Believes in Keeping All Team Members Focused on Being Customer-Centered in All That We Do.  We Know and Understand That Our Customer's Needs Are the Most Important Priorities Each Day.  With Everything That We Implement, We Always Ask Ourselves How This Will Impact Our Customer.  If It Doesn't Enhance the Customer Experience, We Don't Do It! Our Customer Is the Foundation of Our Business, And Our Entire Team Is Committed to Customer Satisfaction.  Our Job Is to Merely Make Our Customer's Jobs Easier to Provide Outstanding Living Environments.  We Take Our Job Seriously, And We Push Each Other Daily to Exceed Expectations and Provide Positive Customer Experiences.  We Set High Expectations Each Day to Detail, Workmanship, And Excellence.</p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+
+// Replace with your business address
+const businessAddress = "1850 Crown Dr. STE 1113 Dallas, Texas 75234";
+
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  // Get user's address from the form
+  const userAddress = document.getElementById('address').value;
+
+  // Initialize Google Maps Distance Matrix service
+  const service = new google.maps.DistanceMatrixService();
+
+  // Make the request to calculate distance
+  service.getDistanceMatrix(
+    {
+      origins: [userAddress],
+      destinations: [businessAddress],
+      travelMode: 'DRIVING',
+    },
+    function(response, status) {
+      if (status === 'OK') {
+        const result = response.rows[0].elements[0];
+        const distance = result.distance.text;
+        const duration = result.duration.text;
+
+        // Display the result
+        document.getElementById('distance').textContent = `Distance: ${distance}`;
+        document.getElementById('duration').textContent = `Estimated Travel Time: ${duration}`;
+        document.getElementById('distance-result').style.display = 'block';
+      } else {
+        alert('Error calculating distance: ' + status);
+      }
+    }
+  );
+});
+</script>
+
+<!-- EmailJS Form Handling Script -->
+<script type="text/javascript">
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent traditional form submission
+
+  emailjs.sendForm('service_ud7g4vt', 'template_qw69fcc', this)
+    .then(function() {
+      alert('SUCCESS! Your appointment request has been sent.');
+    }, function(error) {
+      alert('FAILED... Please try again.' + JSON.stringify(error));
+    });
+});
+</script>
+
+<div class="maps">
+  <h1>Location Map</h1>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.535814502058!2d-96.86224900000002!3d32.8045652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e9d479f3bd247%3A0x97e9d11ea0d7d728!2sRC%20Flooring%20and%20Granite!5e0!3m2!1sen!2sus!4v1740369836043!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+<!-- Bootstrap JS via CDN (for components like navbar, modals, etc.) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+
+<!-- Footer Section -->
+<div class="footer__container">
+<div class="footer__content">
+  <!-- Contact Information -->
+  <div class="footer__column">
+    <p><strong>Contact Information:</strong></p>
+    <p>Phone Number: (469) 984-1418</p>
+    <p>Email: info@rcfloorstx.com</p>
+    <p>Address: 3031 Quebec St Suite 120, Dallas Texas 75247</p>
+    <p><strong>Business Hours:</strong></p>
+    <p>Monday: 7:30 AM - 6:00 PM</p>
+    <p>Tuesday: 7:30 AM - 6:00 PM</p>
+    <p>Wednesday: 7:30 AM - 6:00 PM</p>
+    <p>Thursday: 7:30 AM - 6:00 PMM</p>
+    <p>Friday: 7:30 AM - 6:00 PM</p>
+    <p>Saturday: 7:30 AM - 2:00 PM</p>
+    <p>Sunday: Closed</p>
+ </div>
+
+  <!-- Quick Links -->
+  <div class="footer__column">
+    <p><strong>Quick Links</strong></p>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contactus.html">Contact Us</a></li>
+    </ul>
+  </div>
+
+<!-- Bottom Section -->
+<div class="footer__bottom">
+<p class="website__rights">© RC Flooring And Granite. 2025. All Rights Reserved.</p>
+<p>Developed by John Solis, Student at The University of Texas at Dallas</p>
+<a href="index.html" class="back-to-top">Back to Top</a>
+</div>
+</div>
+
+<!-- Link to JavaScript -->
+<script src="app.js"></script>
+</body>
+</html>
+
